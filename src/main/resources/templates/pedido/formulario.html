@@ -1,48 +1,52 @@
 <html>
-<head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
-<meta charset="UTF-8" />
-</head>
+<head th:replace="~{base :: head}" />
 <body>
+
+	<div th:replace="~{base :: logo}"></div>
+
 	<div class="container">
 		<div class="jumbotron bg-black text-white p-5 mb-3">
 			<h1 class="display-4">Novo Pedido</h1>
 		</div>
 
+		<div class="card">
+			<form action="/pedido/novo" th:object="${requisicaoNovoPedido}"
+				method="POST" class="card-body">
+				<div class="form-group mb-3">
+					<label for="nomeProduto" class="form-label">Produto</label> <input
+						th:field="*{nomeProduto}" type="text" th:errorclass="is-invalid"
+						class="form-control" placeholder="nome do produto"> <small>Informe
+						qual o nome do produto.</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">Erros
+						do nome do produto</div>
+				</div>
 
-		<form action="/pedido/novo" method="POST" class="card-body">
-			<div class="mb-3">
-				<label for="nomeProduto" class="form-label">Produto</label> <input
-					name="nomeProduto" type="text" class="form-control"
-					placeholder="nome do produto"> <small>Informe qual
-					o nome do produto.</small>
-			</div>
+				<div class="form-grou mb-3">
+					<label for="urlProduto" class="form-label">URL</label> <input
+						th:field="*{urlProduto}" th:errorclass="is-invalid" type="text"
+						class="form-control" placeholder="url do produto"> <small>Procure
+						em um site o produto que você deseja e cole a url da página aqui.</small>
+					<div class="invalid-feedback" th:errors="*{urlProduto}">Erros
+						do URL produto</div>
+				</div>
+				<div class="form-grou mb-3">
+					<label for="urlImagem" class="form-label">Imagem</label> <input
+						th:field="*{urlImagem}" th:errorclass="is-invalid" type="text"
+						class="form-control" placeholder="url da imagem"> <small>Copie
+						a url de uma boa imagem do produto e cole aqui para ajudar a
+						conseguir compradores.</small>
+					<div class="invalid-feedback" th:errors="*{urlImagem}">Erros
+						da Url da Imagem</div>
+				</div>
+				<div class="form-grou mb-3">
+					<label for="descricao" class="form-label">Descrição</label>
+					<textarea th:field="*{descricao}" class="form-control"
+						placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary my-2 my-sm-0">Cadastrar</button>
 
-			<div class="mb-3">
-				<label for="urlProduto" class="form-label">URL</label> <input
-					name="urlProduto" type="text" class="form-control"
-					placeholder="url do produto"> <small>Procure em um
-					site o produto que você deseja e cole a url da página aqui.</small>
-			</div>
-			<div class="mb-3">
-				<label for="urlImagem" class="form-label">Imagem</label> <input
-					name="urlImagem" type="text" class="form-control"
-					placeholder="url da imagem"> <small>Copie a url de
-					uma boa imagem do produto e cole aqui para ajudar a conseguir
-					compradores.</small>
-			</div>
-			<div class="mb-3">
-				<label for="descricao" class="form-label">Descricao</label>
-				<textarea name="descricao" class="form-control"
-					placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
-			</div>
-			<button type="submit" class="btn btn-primary my-2 my-sm-0">Cadastrar</button>
-
-		</form>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
