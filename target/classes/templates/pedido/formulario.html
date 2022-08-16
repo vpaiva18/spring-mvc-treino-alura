@@ -10,8 +10,7 @@
 		</div>
 
 		<div class="card">
-			<form action="/pedido/novo" th:object="${requisicaoNovoPedido}"
-				method="POST" class="card-body">
+			<form th:action="@{/pedido/novo}" th:object="${requisicaoNovoPedido}" method="POST" class="card-body">
 				<div class="form-group mb-3">
 					<label for="nomeProduto" class="form-label">Produto</label> <input
 						th:field="*{nomeProduto}" type="text" th:errorclass="is-invalid"

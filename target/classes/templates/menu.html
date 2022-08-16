@@ -1,0 +1,9 @@
+<div th:fragment="menu" class="mb-3">
+	<div class="col" sec:authorize="isAuthenticated()">
+		<nav class="nav">
+			<a class="nav-link" th:href="@{/home}">Home</a>
+			<a class="nav-link"	th:href="@{/usuario/myHome}">Meus Pedidos</a> 
+		</nav>
+	</div>
+</div>
+
